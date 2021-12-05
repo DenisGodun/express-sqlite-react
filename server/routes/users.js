@@ -1,9 +1,21 @@
-const Router = require('express').Router;
+const Router = require("express").Router;
 const db = require("../services/db.js");
+const {query, validationResult} = require("express-validator");
 
 const router = new Router();
 
-router.get("/users", (req, res) => {
+router.get("/users", 
+query("page").optional().isInt({min: 1}).withMessage("Incorrect value of the 'page' field"),
+query("limit").optional().isInt({min: 1}).withMessage("Incorrect value of the 'limit' field"), 
+(req, res) => {
+  const errorsValidator = validationResult(req);
+  if (!errorsValidator.isEmpty()) {
+    return res.status(400).json({
+      "ok": false,
+      errors: errorsValidator.array()
+    });
+  }
+
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 100;
   const skipIndex = (page - 1) * limit;

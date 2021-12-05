@@ -1,4 +1,4 @@
-const sqlite3 = require('sqlite3');
+const sqlite3 = require("sqlite3");
 const fs = require("fs");
 
 const db = new sqlite3.Database('./database.db', (err) => {
@@ -49,9 +49,6 @@ const db = new sqlite3.Database('./database.db', (err) => {
     }
 });
 
-/*
-SELECT id, first_name, last_name, email, gender, ip_adress,date,sum(clicks) total_clicks, sum(page_views) total_page_views FROM users LEFT JOIN users_statistic ON users_statistic.user_id = users.id GROUP BY id ORDER BY id
-*/
 
 exports.getUsers = (skipIndex, limit, callback) => {
   const query = "SELECT id,\
@@ -78,15 +75,6 @@ exports.countAllUsers = callback => {
   });
 }
 
-/*
-SELECT * FROM 'users_statistic' WHERE date(date) 
-BETWEEN date('2019-10-12') AND date('2019-10-23') AND user_id = 33
-
-SELECT * FROM 'users_statistic' WHERE user_id = 33
-
-SELECT user_id, date, page_views, clicks, first_name FROM 'users_statistic' INNER JOIN users ON users.id = users_statistic.user_id WHERE date(date) 
-BETWEEN date('2019-10-12') AND date('2019-10-23') AND user_id = 33
-*/
 exports.getUserStatisticById = (id, from, to, callback) => {
   let query = "SELECT * FROM users_statistic WHERE user_id = ?";
   const values = [id];
