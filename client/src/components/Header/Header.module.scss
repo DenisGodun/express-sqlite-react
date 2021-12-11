@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+.header {
+  background: $background-gradient-blue;
+  padding: 0.625em 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: $ligh;
+    font-size: 2.5em;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}

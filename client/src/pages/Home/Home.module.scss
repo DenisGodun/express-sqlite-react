@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.about {
+  position: relative;
+  background: $background-gradient-blue;
+  z-index: 10;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__body {
+    padding: 1.75em 0;
+    flex-basis: 50%;
+
+    h1 {
+      color: $ligh;
+      font-weight: 400;
+      font-size: 3em;
+      line-height: 59px;
+    }
+
+    p {
+      padding: 1.5em 0 2em 0;
+      color: $ligh;
+      font-size: 1.25em;
+      line-height: 142%;
+    }
+
+    a {
+      display: inline-block;
+      background-color: #fff;
+      padding: 1em 2em;
+      border-radius: 8px;
+      color:#3A80BA;
+      text-decoration: none;
+      line-height: 142%;
+    }
+
+    a:hover {
+      background-color: rgb(228, 228, 228);
+      transition: 0.3s ease all;  
+    }
+  }
+
+  &__img {
+    z-index: 10;
+    flex-basis: 40%;
+  }
+
+  &_title_bold {
+    font-weight: 700;
+  }
+
+  &__bottomImage {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;  
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
