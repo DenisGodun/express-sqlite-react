@@ -7,5 +7,10 @@
 
 body {
   font-family: $Montserrat;
+  color: $dark;
+}
+
+input, select, textarea {
+  font-family: inherit;
 }
 

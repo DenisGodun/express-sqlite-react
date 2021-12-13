@@ -1,1 +1,164 @@
 @import "../../styles/variables.scss";
+
+.breadcrumb {
+  background-color: rgba(163, 163, 163, 0.288);
+
+  &__list {
+    list-style: none;
+    padding: 1em 0 1.5em 0;
+
+    li {
+      display: inline;
+      font-size: 1em;
+      color: #3A80BA;
+
+      a {
+        text-decoration: none;
+        color: #CCCCCC;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    li+li:before {
+      padding: 8px;
+      color: #CCCCCC;
+      content: ">";
+    }
+  }
+}
+
+.userStatistic {
+
+  h4 {
+    font-weight: 700;
+    font-size: 2em;
+    padding-bottom: 16px;
+  }
+
+  &__scrollTable {
+    overflow-x:auto;
+  }
+
+  &__table {
+    border-collapse: collapse;
+    width: 100%;
+    min-height: 1700px;
+
+    td, th {
+      border-right: 1px solid #ffffff;
+      padding: 0.375em 1.5em 0.375em 1.5em;
+    }
+
+    td:first-child {
+      text-align: center;
+    }
+
+    tr {
+      background-color: #FBFBFB;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #F1F1F1;;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    th {
+      padding: 0.875em 1.5em 0.875em 1.5em;
+      background-color: #3A80BA;
+      color: #ffffff;
+      font-weight: 400;
+    }
+
+    th:first-child {
+      border-top-left-radius: 10px;
+    }
+
+    th:last-child {
+      border-top-right-radius: 10px;
+    }
+
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 10px;
+    }
+
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+  }
+}
+
+.pagination {
+  padding: 1.5em 0 1.5em 0;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+  }
+
+  li {
+    font-size: 1em;
+    padding: 14px;
+    border: 2px solid #F1F1F1;
+    border-radius: 8px;
+    min-width: 48px;
+    text-align: center;
+    margin-right: 4px;
+    margin-left: 4px;
+  }
+
+  li:first-child {
+    border-color: #ffffff;
+  }
+
+  li:last-child {
+    border-color: #ffffff;
+  }
+
+  li:hover:not(&__active):not(:first-child):not(:last-child) {
+    border-color: #3A80BA;
+  }
+
+  li:hover:not(&__active) {
+    cursor: pointer;
+  }
+
+  &__active {
+    border-color: #3A80BA;
+    background-color: #3A80BA;
+    color: #ffffff;
+  }
+
+  &__prev {
+    background: transparent url("../../assets/images/svg/icons/icon-prev-active.svg") no-repeat center center;
+  }
+
+  &__prev_inactive {
+    background: transparent url("../../assets/images/svg/icons/icon-prev-inactive.svg") no-repeat center center;
+  }
+
+  &__next {
+    background: transparent url("../../assets/images/svg/icons/icon-next-active.svg") no-repeat center center;
+  }
+
+  &__next_inactive {
+    background: transparent url("../../assets/images/svg/icons/icon-next-inactive.svg") no-repeat center center;
+  }
+}
+
+.loading {
+  font-weight: 400; 
+  font-size: 24px;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
