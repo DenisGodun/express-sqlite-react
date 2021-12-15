@@ -1,35 +1,5 @@
 @import "../../styles/variables.scss";
 
-.breadcrumb {
-  background-color: rgba(163, 163, 163, 0.288);
-
-  &__list {
-    list-style: none;
-    padding: 1em 0 1.5em 0;
-
-    li {
-      display: inline;
-      font-size: 1em;
-      color: #3A80BA;
-
-      a {
-        text-decoration: none;
-        color: #CCCCCC;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    }
-
-    li+li:before {
-      padding: 8px;
-      color: #CCCCCC;
-      content: ">";
-    }
-  }
-}
-
 .userStatistic {
 
   h4 {
@@ -46,6 +16,14 @@
     border-collapse: collapse;
     width: 100%;
     min-height: 1700px;
+
+    a {
+      color: $dark;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
     td, th {
       border-right: 1px solid #ffffff;

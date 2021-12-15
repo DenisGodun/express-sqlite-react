@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import axiosInstance from "../../http/httpInstance";
 import { getCountPages } from "../../utils/pagination.utils";
 
@@ -46,8 +48,6 @@ const Users = () => {
       })
       .then((response) => {
         setIsLoadingUsers(false);
-        //console.log("work??!!!");
-        //console.log(response.data);
         setUsers(response.data.result.users);
 
         const totalCountUsers = response.data.result["total-count"];
@@ -63,16 +63,12 @@ const Users = () => {
     fetchUsers();
   }, [page]);
 
+  const BreadcrumbList = [<Link to='/'>Main page</Link>,"User satistics"];
+
+
   return (
     <>
-    <div className={style.breadcrumb}>
-      <div className={style.container}>
-        <ul className={style.breadcrumb__list}>
-          <li><Link to="/">Main page</Link></li>  
-          <li>User satistics</li>  
-        </ul>  
-      </div>
-    </div>
+    <Breadcrumb items={BreadcrumbList}/>
     <div className={style.userStatistic}>
       <div className={style.container}>
         <h4>Users statistics {isLoadingUsers && (<span className={style.loading}>Loading...</span>)}</h4>
@@ -100,14 +96,14 @@ const Users = () => {
               users.map((user, index) => {
                 return (
                   <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.first_name}</td>
-                    <td>{user.last_name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.gender}</td>
-                    <td>{user.ip_adress}</td>
-                    <td>{user.total_clicks}</td>
-                    <td>{user.total_page_views}</td>
+                    <td><Link to={`/user/${user.id}`}>{user.id}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.first_name}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.last_name}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.email}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.gender}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.ip_adress}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.total_clicks}</Link></td>
+                    <td><Link to={`/user/${user.id}`}>{user.total_page_views}</Link></td>
                   </tr>
                 );
             })}
@@ -120,11 +116,10 @@ const Users = () => {
             <li 
               onClick={() => {
                 if(page > 1) {
-                  console.log("prev");
                   setPage(page-1);  
                 }
-              }} 
-              className={style.pagination__prev_inactive}>
+              }}
+              className={ page > 1 ? style.pagination__prev : style.pagination__prev_inactive}>
             </li>
             {users.length &&
               pagesArray.map((elem, index) => {
@@ -141,11 +136,10 @@ const Users = () => {
             <li 
               onClick={() => {
                 if(page < totalCountPages) {
-                  console.log("next");
                   setPage(page+1);  
                 }
               }} 
-              className={style.pagination__next}>
+              className={ page < totalCountPages ? style.pagination__next : style.pagination__next_inactive}>
             </li>
           </ul>
         </div>

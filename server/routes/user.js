@@ -21,6 +21,21 @@ query("to").optional().isDate().withMessage("Incorrect value of the 'to' field")
   const userId = parseInt(req.query.id);
   const from = req.query.from || null;
   const to = req.query.to || null;
+  let userFirstName = null;
+  let userLastName = null;
+
+  db.getUserInfoById(userId, (error, rows) => {
+    if (error) {
+      res.status(500).json({
+        "ok": false,
+        "error": error.message
+      });
+      return;
+    }
+    userFirstName = rows[0].first_name;
+    userLastName = rows[0].last_name;
+  });
+
   db.getUserStatisticById(userId, from, to, (error, rows) => {
     if (error) {
       res.status(500).json({
@@ -32,6 +47,8 @@ query("to").optional().isDate().withMessage("Incorrect value of the 'to' field")
     res.status(200).json({
       "ok": true,
       "result" : {
+        "first_name": userFirstName,
+        "last_name": userLastName,
         "data": rows  
       }
     })

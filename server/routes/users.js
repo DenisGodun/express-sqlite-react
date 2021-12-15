@@ -20,6 +20,7 @@ query("limit").optional().isInt({min: 1}).withMessage("Incorrect value of the 'l
   const limit = parseInt(req.query.limit) || 10;
   const skipIndex = (page - 1) * limit;
   let totalUsers = null;
+
   db.countAllUsers( (error, rows) => {
     if (error) {
       res.status(500).json({
@@ -49,6 +50,8 @@ query("limit").optional().isInt({min: 1}).withMessage("Incorrect value of the 'l
       }
     });
   });
+
+
 });
 
 module.exports = router;

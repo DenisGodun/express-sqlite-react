@@ -24,10 +24,3 @@ $background-gradient-blue: linear-gradient(90.95deg, #255D8B 2.29%, #3A80BA 96.7
       }
   }
 }
-
-@mixin placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}  
-}

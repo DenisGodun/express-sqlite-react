@@ -49,7 +49,6 @@ const db = new sqlite3.Database('./database.db', (err) => {
     }
 });
 
-
 exports.getUsers = (skipIndex, limit, callback) => {
   const query = "SELECT id,\
     first_name,\
@@ -82,6 +81,14 @@ exports.getUserStatisticById = (id, from, to, callback) => {
     query = "SELECT * FROM users_statistic WHERE user_id = ? AND date BETWEEN ? AND ?";
     values.push(from, to);
   } 
+  db.all(query, values, (error, rows) => {
+    callback(error, rows);  
+  });
+}
+
+exports.getUserInfoById = (id, callback) => {
+  let query = "SELECT id, first_name, last_name, email, gender, ip_adress FROM users WHERE id = ? LIMIT 1";
+  const values = [id];
   db.all(query, values, (error, rows) => {
     callback(error, rows);  
   });

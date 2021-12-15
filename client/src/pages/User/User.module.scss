@@ -1,0 +1,44 @@
+@import "../../styles/variables.scss";
+
+.userInfo {
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include breakpoint(sd) {
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 2em;
+
+    @include breakpoint(sd) {
+      text-align: center;
+    }
+  }
+
+  &__statistic {
+    padding-bottom: 32px;
+    h4 {
+      font-weight: 700;
+      font-size: 1.5em;
+      padding-bottom: 24px;
+    }
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.loading {
+  font-weight: 400; 
+  font-size: 24px;
+}
